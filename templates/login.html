@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <section class="position-relative py-4 py-xl-">
+        <div class="container" style="font-family: 'Abyssinica SIL', serif;">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-xl-4 col-xxl-5">
+                    <div style="text-align: center;">
+                        <h2>Log in</h2>
+                        <p>If you have not already created an account, please register first!</p>
+                    </div>
+                    <div class="card mb-5" action="/login" method="post">
+                        <div class="card-body d-flex flex-column align-items-center" style="background: rgba(96,96,91,0.11);">
+                            <div class="bs-icon-xl bs-icon-circle bs-icon my-4"><svg class="bi bi-person-circle" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="font-size: 85px;color: rgb(0,0,0);">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
+                                </svg></div>
+                            <form class="text-center" method="post" style="padding-top: 0px;margin-top: 11px;margin-bottom: 23px;">
+                                <div class="mb-3"><input class="form-control" type="username" name="username" placeholder="Username" /></div>
+                                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password" /></div>
+                                <div class="mb-3"><button class="btn btn-outline-dark w-100" type="submit">Log in</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

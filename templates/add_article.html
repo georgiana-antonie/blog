@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Article
+{% endblock %}
+
+{% block main %}
+    <section class="position-relative py-4 py-xl-5" style="background: url('/static/img/cover_index.jpg') center / cover no-repeat;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="font-family: 'Abyssinica SIL', serif;">
+                    <div class="card mb-5" style="padding-left: 0px;margin-left: 70px;margin-right: 70px;">
+                        <div class="card-body p-sm-5">
+                            <h2 class="text-center mb-4" style="font-weight: bold;">Add article</h2>
+                            <form action="/add_article" method="post" enctype="multipart/form-data">
+                                <div class="mb-3"><input class="form-control" type="text" id="name-3" name="location" placeholder="City, Country" ></div>
+                                <div class="mb-3"><input class="form-control" type="text" id="name-4" name="title" placeholder="Title"></div>
+                                <div class="mb-3"><textarea class="form-control" id="message-1" name="text" rows="20" placeholder="Text"></textarea></div>
+                                <div class="mb-3"><input class="form-control" type="file" name="file"></div>
+                                <div><button class="btn btn-outline-dark d-block w-100" type="submit">Send </button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

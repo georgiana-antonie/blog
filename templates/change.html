@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change User Profile
+{% endblock %}
+
+{% block main %}
+
+<div class="container" style="font-family: 'Abyssinica SIL', serif; background: rgba(96,96,91,0.11);">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="text-center" style="padding-bottom: 0px;margin-bottom: 82px;"><br/><br/><br/>
+                {% if default_photo %}
+                <img class="border rounded-circle" style="width: 300px;height: 300px;text-align: center;" src="{{profile_photo}}" />
+                {% else %}
+                <img class="border rounded-circle" style="width: 300px;height: 300px;text-align: center;" src="data:image/jpg;base64,{{profile_photo}}" />
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6" style="padding: 28px;">
+            <div class="card mb-5">
+                <div class="card-body p-sm-5">
+                    <h2 class="text-center mb-4">Details about you</h2>
+                    <form action="/change" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3"><input id="name-2" class="form-control" type="text" name="first_name" placeholder="First name" /></div>
+                        <div class="mb-3"><input id="name-3" class="form-control" type="text" name="last_name" placeholder="Last name" /></div>
+                        <div class="mb-3"><input class="form-control" name="birthday" type="date" /></div>
+                        <div class="mb-3"><textarea id="message-2" class="form-control" name="details" rows="6" placeholder="About you"></textarea></div>
+                        <div class="mb-3"><input class="form-control" type="file" name="file"></div>
+                        <div><button class="btn btn-outline-dark w-100" type="submit">Save</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

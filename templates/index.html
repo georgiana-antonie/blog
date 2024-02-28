@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<div class="container d-flex justify-content-center align-items-center" style="font-family: 'Abyssinica SIL', serif">
+    <form action="/" method="post" class="d-flex">
+        <div class="mb-3">
+            <input autofocus class="form-control me-2" name="location" placeholder="City, Country" type="text">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </div>
+    </form>
+</div>
+<!-- Cover photo and text -->
+<div class="row mb-5" style="background: url('/static/img/cover_index.jpg') top / cover no-repeat;height: 550px;">
+    <div class="col-md-8 col-xl-6 text-center align-self-center mx-auto" style="background: rgba(255,255,255,0.38);font-family: 'Abyssinica SIL', serif;">
+        <div>
+            <h2><br />Welcome to our open travel blog,<br />where every adventurer is a storyteller!</h2>
+            <p class="w-lg-50">Whether you&#39;re a seasoned explorer or a first-time wanderer, this is your space to share and discover. Uncover hidden gems,
+                relive unforgettable moments, and be a part of a global community bound by a love for exploration. Your journey begins here – join us and let the stories unfold!</p>
+        </div>
+    </div>
+</div>
+<!-- Articles -->
+<div class="container py-4 py-xl-5" style="font-family: 'Abyssinica SIL', serif;">
+    <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+        {% for row in rows %}
+            <div class="col">
+                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="data:image/jpg;base64,{{row['ImageData']}}">
+                    <div class="card-body p-4" style= "min-height: 320px;max-height: 320px;">
+                        <p class="card-text mb-0" style="color: #60605b;font-style: italic;">{{row["location"]}}</p>
+                        <h4 class="card-title" style="text-align: center;">{{row["title"]}}</h4>
+                        <p class="card-text" style="max-height: 6em; overflow: hidden; line-height: 1.2;">{{row["text"]}}</p>
+                        <!-- Button trigger modal -->
+                        <div style="text-align: right;">
+                            <button type="button" class="btn btn-outline-dark" style="padding: 1px 16px;font-size: 14px;" data-toggle="modal" data-target="#{{row['id']}}">
+                            See more
+                            </button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="{{row['id']}}" tabindex="-1" role="dialog" ria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content">
+                                <div style="width: 100%; height: 500px;" class="text-center"><br />
+                                <img class="rounded" style="width: 98%; height: 100%;" alt="Responsive image" src="data:image/jpg;base64,{{row['ImageData']}}"><br />
+                                </div>
+                                <div class="modal-header text-center">
+                                <h4 class="modal-title" id="exampleModalLabel" style="margin: 0 auto;"><br />{{row["title"]}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{row["text"]}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-dark"  data-dismiss="modal" >Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!--End modal-->
+                        <div class="d-flex">
+                            <div class="d-flex">
+                                {% if row['default_photo'] is sameas true %}
+                                <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="{{row['profile_photo']}}" />
+                                {% else %}
+                                <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="data:image/jpg;base64,{{row['profile_photo']}}"  />
+                                {% endif %}
+                                <div>
+                                    <p class="fw-bold mb-0">{{row["username"]}}</p>
+                                    <p class="text-muted mb-0">{{row["date"]}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
