@@ -330,3 +330,6 @@ def change():
             # Handle the case where no profile is found for the specified user_id
             profile_photo = url_for('static', filename='img/standard_avatar.jpg')
         return render_template("change.html", profile_photo=profile_photo, default_photo=default_photo)
+
+if __name__=="__main__":
+    app.run(host='0.0.0.0', port=5000)
